@@ -35,7 +35,7 @@ class CalcController {
 
         document.addEventListener('keyup', e=> {
 
-            console.log(e.key);
+            
 
             switch (e.key) {
 
@@ -47,29 +47,22 @@ class CalcController {
                     this.clearEntry();
                     break;
     
-                case 'soma':
-                    this.addOperation('+');
+                case '+':
+                case '-':
+                case '*':
+                case '/':
+                case '%':
+                    this.addOperation(e.key);
                     break;
     
-                case 'subtracao':
-                    this.addOperation('-');
-                    break;
+                
     
-                case 'divisao':
-                    this.addOperation('/');
-                    break;
-    
-                case 'porcento':
-                    this.addOperation('%');
-                    break;
-                case 'multiplicacao':
-                    this.addOperation('*');
-                    break;
-    
-                case 'igual':
+                case 'Enter':
+                case '=':
                     this.calc();
                     break;
-                case 'ponto':
+                case '.':
+                case ',':
                     this.addDot();
                     break;
     
@@ -83,13 +76,10 @@ class CalcController {
                 case '7':
                 case '8':
                 case '9':
-                    this.addOperation(parseInt(value));
+                    this.addOperation(parseInt(e.key));
                     break;
     
-                default:
-                    this.setError();
-                    break;
-    
+                
             }
 
         });
